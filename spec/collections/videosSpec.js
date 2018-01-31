@@ -5,11 +5,11 @@ describe ('VideosCollection', function() {
 
     beforeEach(function() {
       collection = new Videos(fakeVideoData);
-      sinon.spy(Backbone, 'ajax');
+      sinon.spy(collection, 'fetch');
     });
 
     afterEach(function() {
-      Backbone.ajax.restore();
+      collection.fetch.restore();
     });
 
     it('should have a search function', function() {
@@ -18,12 +18,12 @@ describe ('VideosCollection', function() {
 
     it('should initiate an ajax request when search is called', function() {
       collection.search();
-      expect(Backbone.ajax).to.have.been.called;
+      expect(collection.fetch).to.have.been.called;
     });
 
     it('should initiate an ajax request when search is called with the specified data', function() {
       collection.search('something_to_search_for');
-      expect(Backbone.ajax).to.have.been.calledWithMatch({data: {q: 'something_to_search_for'}});
+      expect(collection.fetch).to.have.been.calledWithMatch({data: {q: 'something_to_search_for'}});
     });
 
     it('should convert the fetched data into an array', function() {
