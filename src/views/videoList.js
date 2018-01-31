@@ -7,6 +7,7 @@ var VideoListView = Backbone.View.extend({
     'click .video-list-entry-title': 'handleClick'
   },
   
+
   initialize: function() {
     // this.render();
     this.listenTo(this.collection, 'sync', this.render);

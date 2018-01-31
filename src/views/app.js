@@ -20,7 +20,6 @@ var AppView = Backbone.View.extend({
 
     new VideoListView({
       collection: this.collection,
-      model: this.videos,
       el: this.$('.list')
     }).render();
 
@@ -28,9 +27,6 @@ var AppView = Backbone.View.extend({
       collection: this.collection,
       el: this.$('.search')
     }).render();
-
-    
-
     return this; 
   },
 
